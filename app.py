@@ -1,8 +1,6 @@
 from twitter import Twitter
 import time
 
-#pancing deploy
-
 tw = Twitter()
 
 def start():
