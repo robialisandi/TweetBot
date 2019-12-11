@@ -16,9 +16,8 @@ def start():
                 id = dms[i]['id']
 
                 if len(message) is not 0 and len(message) < 280:
-                    if "/gt" or "/GT" in message:
+                    if "/gt" in message:
                         message = message.replace("/gt", "")
-                        message = message.replace("/GT", "")
                         if len(message) is not 0:
                             if dms[i]['media'] is None:
                                 print("DM will be posted")
