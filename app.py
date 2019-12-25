@@ -1,7 +1,7 @@
 from twitter import Twitter
 import time
 
-#pancing
+#
 
 tw = Twitter()
 
