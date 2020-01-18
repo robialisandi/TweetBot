@@ -65,10 +65,9 @@ class Twitter:
     def post_tweet(self, tweet):
         self.api.update_status(tweet)
 
-    def post_tweet_with_media(self, tweet, media_url):
-        print("Downloading media..."+ media_url)
+    def post_tweet_with_media(self, tweet, media_url, id):
+        print("Downloading media -> "+ media_url)
         arr = str(media_url).split('/')
-        print("Split media..." + arr[9])
         auth = OAuth1(client_key= constants.CONSUMER_KEY,
                       client_secret= constants.CONSUMER_SCRET,
                       resource_owner_secret= constants.ACCESS_SECRET,
@@ -77,7 +76,12 @@ class Twitter:
         with open(arr[9], 'wb') as f:
             f.write(r.content)
         print("Media downloaded successfully!")
-        tweet = re.sub(r'^https?:\/\/.*[\r\n]*', '', tweet, flags=re.MULTILINE)
+        print("Before Replace message -> " + tweet)
+        tweet = re.sub(r'http\S+', '', tweet)
+        url = "https://twitter.com/messages/media/"+ str(id)
+        print("url -> " + url)
+        tweet = tweet.replace(url, "")
+        print("After Replace message -> " + tweet)
         self.api.update_with_media(filename= arr[9], status = tweet)
         os.remove(arr[9])
         print("Upload with media success!")
