@@ -5,6 +5,7 @@ import _json
 from requests_oauthlib import OAuth1
 import requests
 import os
+import re
 
 class Twitter:
     def __init__(self):
@@ -65,8 +66,9 @@ class Twitter:
         self.api.update_status(tweet)
 
     def post_tweet_with_media(self, tweet, media_url):
-        print("Downloading media...")
+        print("Downloading media..."+ media_url)
         arr = str(media_url).split('/')
+        print("Split media..." + arr[9])
         auth = OAuth1(client_key= constants.CONSUMER_KEY,
                       client_secret= constants.CONSUMER_SCRET,
                       resource_owner_secret= constants.ACCESS_SECRET,
@@ -75,6 +77,7 @@ class Twitter:
         with open(arr[9], 'wb') as f:
             f.write(r.content)
         print("Media downloaded successfully!")
+        tweet = re.sub(r'^https?:\/\/.*[\r\n]*', '', tweet, flags=re.MULTILINE)
         self.api.update_with_media(filename= arr[9], status = tweet)
         os.remove(arr[9])
         print("Upload with media success!")
