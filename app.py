@@ -14,7 +14,6 @@ def start():
                 message = dms[i]['message']
                 sender_id = dms[i]['sender_id']
                 id = dms[i]['id']
-                print("MEDIA -> "+ dms[i]['media'])
                 if len(message) is not 0 and len(message) < 280:
                     if "/gt" in message:
                         message = message.replace("/gt", "")
