@@ -37,6 +37,7 @@ class Twitter:
                 else:
                     print("Dm have an attachment..")
                     attachment = dm[x].message_create['message_data']['attachment']
+                    print("Type media -> "+ attachment['type'])
                     d = dict(message=message, sender_id=sender_id, id=dm[x].id, media = attachment['media']['media_url'])
                     dms.append(d)
                     dms.reverse()
