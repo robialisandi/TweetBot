@@ -28,7 +28,6 @@ def start():
                                 tw.delete_dm(id)
 
                         else:
-                            print("DM deleted because its empty..")
                             tw.delete_dm(id)
 
 
@@ -39,7 +38,6 @@ def start():
             dms = list()
 
         else:
-            print("Direct message is empty...")
             dms = tw.read_dm()
             if len(dms) is 0:
                 time.sleep(60)

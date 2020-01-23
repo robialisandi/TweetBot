@@ -37,9 +37,6 @@ class Twitter:
                 else:
                     print("Dm have an attachment..")
                     attachment = dm[x].message_create['message_data']['attachment']
-                    print("Type attachment -> "+ attachment['type'])
-                    print("Type media -> "+ attachment['media']['type'])
-                    print("Url media -> "+ attachment['media']['media_url'])
                     d = dict(message=message, sender_id=sender_id, id=dm[x].id, media = attachment['media']['media_url'])
                     dms.append(d)
                     dms.reverse()
@@ -69,7 +66,6 @@ class Twitter:
         self.api.update_status(tweet)
 
     def post_tweet_with_media(self, tweet, media_url, id):
-        print("Downloading media -> "+ media_url)
         arr = str(media_url).split('/')
         auth = OAuth1(client_key= constants.CONSUMER_KEY,
                       client_secret= constants.CONSUMER_SCRET,
@@ -78,13 +74,9 @@ class Twitter:
         r = requests.get(media_url, auth = auth)
         with open(arr[9], 'wb') as f:
             f.write(r.content)
-        print("Media downloaded successfully!")
-        print("Before Replace message -> " + tweet)
         tweet = re.sub(r'http\S+', '', tweet)
         url = "https://twitter.com/messages/media/"+ str(id)
         print("url -> " + url)
         tweet = tweet.replace(url, "")
-        print("After Replace message -> " + tweet)
         self.api.update_with_media(filename= arr[9], status = tweet)
         os.remove(arr[9])
-        print("Upload with media success!")
