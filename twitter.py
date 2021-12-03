@@ -1,5 +1,4 @@
 import tweepy
-import constants
 import time
 import _json
 from requests_oauthlib import OAuth1
