@@ -11,8 +11,8 @@ load_dotenv()
 class Twitter:
     def __init__(self):
         print("initializing twitter....")
-        self.inits = tweepy.OAuthHandler(os.environ['CONSUMER_KEY'], os.environ['CONSUMER_SCRET'])
-        self.inits.set_access_token(os.environ['ACCESS_KEY'], os.environ['ACCESS_SECRET'])
+        self.inits = tweepy.OAuthHandler(os.environ.get('CONSUMER_KEY'), os.environ.get('CONSUMER_SCRET'))
+        self.inits.set_access_token(os.environ.get('ACCESS_KEY'), os.environ.get('ACCESS_SECRET'))
         self.api = tweepy.API(self.inits)
 
 
@@ -68,10 +68,10 @@ class Twitter:
 
     def post_tweet_with_media(self, tweet, media_url, id):
         arr = str(media_url).split('/')
-        auth = OAuth1(client_key= os.environ['CONSUMER_KEY'],
-                      client_secret= os.environ['CONSUMER_SCRET'],
-                      resource_owner_secret= os.environ['ACCESS_SECRET'],
-                      resource_owner_key= os.environ['ACCESS_KEY'])
+        auth = OAuth1(client_key= os.environ.get('CONSUMER_KEY'),
+                      client_secret= os.environ.get('CONSUMER_SCRET'),
+                      resource_owner_secret= os.environ.get('ACCESS_SECRET'),
+                      resource_owner_key= os.environ.get('ACCESS_KEY'))
         r = requests.get(media_url, auth = auth)
         with open(arr[9], 'wb') as f:
             f.write(r.content)
