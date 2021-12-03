@@ -6,6 +6,7 @@ import requests
 import os
 import re
 from dotenv import load_dotenv
+load_dotenv()
 
 class Twitter:
     def __init__(self):
