@@ -9,14 +9,14 @@ def start():
     print("Starting program...")
     dms = list()
     while True:
-        if len(dms) is not 0:
+        if dms is not None:
             for i in range(len(dms)):
                 message = dms[i]['message']
                 sender_id = dms[i]['sender_id']
                 id = dms[i]['id']
                 if len(message) is not 0 and len(message) < 280:
                     if "/gt" in message:
-                        message = message.replace("/gt", "🤖")
+                        message = message.replace("/gt", "src:asgar!")
                         if len(message) is not 0:
                             if dms[i]['media'] is None:
                                 print("DM will be posted")
