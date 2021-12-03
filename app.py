@@ -39,7 +39,7 @@ def start():
 
         else:
             dms = tw.read_dm()
-            if len(dms) is 0:
+            if dms is None:
                 time.sleep(60)
 
 if __name__ == "__main__":
