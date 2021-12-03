@@ -9,7 +9,7 @@ def start():
     print("Starting program...")
     dms = list()
     while True:
-        if dms is not None:
+        if len(dms) is not 0:
             for i in range(len(dms)):
                 message = dms[i]['message']
                 sender_id = dms[i]['sender_id']
@@ -39,7 +39,7 @@ def start():
 
         else:
             dms = tw.read_dm()
-            if dms is None:
+            if len(dms) is 0:
                 time.sleep(60)
 
 if __name__ == "__main__":
