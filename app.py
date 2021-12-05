@@ -9,15 +9,15 @@ def start():
     print("Starting program...")
     dms = list()
     while True:
-        if len(dms) != 0:
+        if len(dms) is not 0:
             for i in range(len(dms)):
                 message = dms[i]['message']
                 sender_id = dms[i]['sender_id']
                 id = dms[i]['id']
-                if len(message) != 0 and len(message) < 280:
+                if len(message) is not 0 and len(message) < 380:
                     if "/gt" in message:
                         message = message.replace("/gt", "src:asgar!")
-                        if len(message) != 0:
+                        if len(message) is not 0:
                             if dms[i]['media'] is None:
                                 print("DM will be posted")
                                 tw.post_tweet(message)
@@ -39,7 +39,7 @@ def start():
 
         else:
             dms = tw.read_dm()
-            if len(dms) == 0:
+            if len(dms) is 0:
                 time.sleep(60)
 
 if __name__ == "__main__":
