@@ -14,15 +14,15 @@ def start():
                 message = dms[i]['message']
                 sender_id = dms[i]['sender_id']
                 id = dms[i]['id']
-                if len(message) is not 0 and len(message) < 280:
+                if len(message) is not 0:
                     if "/gt" in message:
                         message = message.replace("/gt", "")
-                        message = "Asgar! " + message
+                        message = "src:asgar! " + message
                         if len(message) > 280 :
                             start = 270
                             stop = len(message) - 1
                             if len(message) > stop :
-                                message = message[0: start:] + message[stop + 1::] + "~mis"
+                                message = message[0: start:] + message[stop + 1::] + " ~missing"
                         if len(message) is not 0:
                             if dms[i]['media'] is None:
                                 print("DM will be posted")
