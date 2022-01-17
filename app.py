@@ -45,8 +45,8 @@ def start():
 
         else:
             dms = tw.read_dm()
-            if len(dms) == 0:
-                time.sleep(60)
+            if len(dms) is 0:
+                time.sleep(30)
 
 if __name__ == "__main__":
     start()
