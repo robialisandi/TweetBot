@@ -17,7 +17,7 @@ def start():
                 if len(message) is not 0:
                     if "/gt" in message:
                         message = message.replace("/gt", "")
-                        message = "src:asgar! " + message
+                        message = "Asgar! " + message
                         if len(message) > 280 :
                             start = 270
                             stop = len(message) - 1
