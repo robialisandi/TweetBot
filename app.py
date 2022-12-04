@@ -5,6 +5,7 @@ import time
 
 tw = Twitter()
 
+
 def start():
     print("Starting program...")
     dms = list()
